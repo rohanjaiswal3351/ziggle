@@ -1,3 +1,3 @@
 firebase:
-  service-account-filename: classpath:service-account.json
-  realtime-database-url: https://dating-app-b84a6-default-rtdb.firebaseio.com
+  serviceAccountFilename: ziggle/src/main/resources/service-account.json
+  realtimeDatabaseUrl: https://dating-app-b84a6-default-rtdb.firebaseio.com
