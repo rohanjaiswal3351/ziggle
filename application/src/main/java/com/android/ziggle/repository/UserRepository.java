@@ -374,5 +374,85 @@ public class UserRepository {
 
         completableFuture.join();
     }
+
+    public void updateUserHeight(String uid, String height) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(COLLECTION_NAME);
+        ApiFuture<Void> future = ref.child(uid).child("height").setValueAsync(height);
+        CompletableFuture<Void> completableFuture = new CompletableFuture<>();
+        future.addListener(() -> {
+            try {
+                future.get();
+                completableFuture.complete(null);
+            } catch (Exception e) {
+                completableFuture.completeExceptionally(e);
+            }
+        }, Runnable::run);
+
+        completableFuture.join();
+    }
+
+    public void updateUserExercise(String uid, String exercise) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(COLLECTION_NAME);
+        ApiFuture<Void> future = ref.child(uid).child("exercise").setValueAsync(exercise);
+        CompletableFuture<Void> completableFuture = new CompletableFuture<>();
+        future.addListener(() -> {
+            try {
+                future.get();
+                completableFuture.complete(null);
+            } catch (Exception e) {
+                completableFuture.completeExceptionally(e);
+            }
+        }, Runnable::run);
+
+        completableFuture.join();
+    }
+
+    public void updateUserEducation(String uid, String education) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(COLLECTION_NAME);
+        ApiFuture<Void> future = ref.child(uid).child("education").setValueAsync(education);
+        CompletableFuture<Void> completableFuture = new CompletableFuture<>();
+        future.addListener(() -> {
+            try {
+                future.get();
+                completableFuture.complete(null);
+            } catch (Exception e) {
+                completableFuture.completeExceptionally(e);
+            }
+        }, Runnable::run);
+
+        completableFuture.join();
+    }
+
+    public void updateUserInstaId(String uid, String instaId) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(COLLECTION_NAME);
+        ApiFuture<Void> future = ref.child(uid).child("instaId").setValueAsync(instaId);
+        CompletableFuture<Void> completableFuture = new CompletableFuture<>();
+        future.addListener(() -> {
+            try {
+                future.get();
+                completableFuture.complete(null);
+            } catch (Exception e) {
+                completableFuture.completeExceptionally(e);
+            }
+        }, Runnable::run);
+
+        completableFuture.join();
+    }
+
+    public void updateUserSnapId(String uid, String snapId) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(COLLECTION_NAME);
+        ApiFuture<Void> future = ref.child(uid).child("snapId").setValueAsync(snapId);
+        CompletableFuture<Void> completableFuture = new CompletableFuture<>();
+        future.addListener(() -> {
+            try {
+                future.get();
+                completableFuture.complete(null);
+            } catch (Exception e) {
+                completableFuture.completeExceptionally(e);
+            }
+        }, Runnable::run);
+
+        completableFuture.join();
+    }
 }
 
