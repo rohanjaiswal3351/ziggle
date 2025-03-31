@@ -2,16 +2,17 @@ package com.android.ziggle.service;
 
 import com.android.ziggle.dto.UserDto;
 import com.android.ziggle.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public List<UserDto> getNextUsers(String lastUserKey, int pageSize) {
         return userRepository.getNextUsers(lastUserKey, pageSize);
@@ -85,8 +86,8 @@ public class UserService {
         userRepository.updateUserBio(uid, bio);
     }
 
-    public void updateUserSwipeRightBy(String uid, String rightSwipeByUid) {
-        userRepository.updateUserSwipeRightBy(uid, rightSwipeByUid);
+    public void updateUserSwipeRightBy(String uid, String rightSwipeByUid, int check) {
+        userRepository.updateUserSwipeRightBy(uid, rightSwipeByUid, check);
     }
 
     public void updateUserHeight(String uid, String height) {
@@ -109,5 +110,28 @@ public class UserService {
         userRepository.updateUserSnapId(uid, snapId);
     }
 
+    public void updateUserSwipeRightByAndMatches(String uid, String rightSwipeByUid) {
+        userRepository.updateUserSwipeRightByAndMatches(uid, rightSwipeByUid);
+    }
+
+    public void updateUserFcmToken(String uid, String fcmToken) {
+        userRepository.updateUserFcmToken(uid, fcmToken);
+    }
+
+    public void updateUserMatches(String uid, String matchUserUid, int check) {
+        userRepository.updateUserMatches(uid, matchUserUid, check);
+    }
+
+    public void updateUserInterests(String uid, String interest, int check) {
+        userRepository.updateUserInterests(uid, interest, check);
+    }
+
+    public void updateUserBlocked(String uid, String blockedUserUid) {
+        userRepository.updateUserBlocked(uid, blockedUserUid);
+    }
+
+    public void updateUserInteract(String uid, String interactUserUid, int check) {
+        userRepository.updateUserInteract(uid, interactUserUid, check);
+    }
 }
 

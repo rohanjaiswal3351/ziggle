@@ -2,6 +2,7 @@ package com.android.ziggle.controller;
 
 import com.android.ziggle.dto.UserDto;
 import com.android.ziggle.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/firebase")
+@RequestMapping("/users")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping("/getNextUsers")
     public ResponseEntity<Object> getNextUsers(@RequestParam String lastUserKey, @RequestParam int pageSize) {
@@ -196,9 +197,11 @@ public class UserController {
     }
 
     @PutMapping("/updateUserSwipeRightBy")
-    public ResponseEntity<Object> updateUserSwipeRightBy(@RequestParam String uid, @RequestParam String rightSwipeByUid) {
+    public ResponseEntity<Object> updateUserSwipeRightBy(@RequestParam String uid,
+                                                         @RequestParam String rightSwipeByUid,
+                                                         @RequestParam int check) {
         try {
-            userService.updateUserSwipeRightBy(uid, rightSwipeByUid);
+            userService.updateUserSwipeRightBy(uid, rightSwipeByUid, check);
             return ResponseEntity.ok().body("User name updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
@@ -249,6 +252,73 @@ public class UserController {
     public ResponseEntity<Object> updateUserSnapId(@RequestParam String uid, @RequestParam String snapId) {
         try {
             userService.updateUserSnapId(uid, snapId);
+            return ResponseEntity.ok().body("User name updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateUserSwipeRightByAndMatches")
+    public ResponseEntity<Object> updateUserSwipeRightByAndMatches(@RequestParam String uid, @RequestParam String rightSwipeByUid) {
+        try {
+            userService.updateUserSwipeRightByAndMatches(uid, rightSwipeByUid);
+            return ResponseEntity.ok().body("User name updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateUserFcmToken")
+    public ResponseEntity<Object> updateUserFcmToken(@RequestParam String uid, @RequestParam String fcmToken) {
+        try {
+            userService.updateUserFcmToken(uid, fcmToken);
+            return ResponseEntity.ok().body("User name updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateUserMatches")
+    public ResponseEntity<Object> updateUserMatches(@RequestParam String uid,
+                                                    @RequestParam String matchUserUid,
+                                                    @RequestParam int check) {
+        try {
+            userService.updateUserMatches(uid, matchUserUid, check);
+            return ResponseEntity.ok().body("User name updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateUserInterests")
+    public ResponseEntity<Object> updateUserInterests(@RequestParam String uid,
+                                                    @RequestParam String interest,
+                                                    @RequestParam int check) {
+        try {
+            userService.updateUserInterests(uid, interest, check);
+            return ResponseEntity.ok().body("User name updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateUserBlocked")
+    public ResponseEntity<Object> updateUserBlocked(@RequestParam String uid,
+                                                      @RequestParam String blockedUserUid) {
+        try {
+            userService.updateUserBlocked(uid, blockedUserUid);
+            return ResponseEntity.ok().body("User name updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/updateUserInteract")
+    public ResponseEntity<Object> updateUserInteract(@RequestParam String uid,
+                                                      @RequestParam String interactUserUid,
+                                                      @RequestParam int check) {
+        try {
+            userService.updateUserInteract(uid, interactUserUid, check);
             return ResponseEntity.ok().body("User name updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error updating user name: " + e.getMessage());
