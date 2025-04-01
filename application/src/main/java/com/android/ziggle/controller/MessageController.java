@@ -1,17 +1,14 @@
 package com.android.ziggle.controller;
 
 import com.android.ziggle.dto.MessageDto;
-import com.android.ziggle.dto.UserDto;
 import com.android.ziggle.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/messages")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MessageController {
 

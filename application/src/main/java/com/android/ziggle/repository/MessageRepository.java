@@ -1,7 +1,6 @@
 package com.android.ziggle.repository;
 
 import com.android.ziggle.dto.MessageDto;
-import com.android.ziggle.dto.UserDto;
 import com.google.api.core.ApiFuture;
 import com.google.firebase.database.*;
 import org.springframework.stereotype.Repository;

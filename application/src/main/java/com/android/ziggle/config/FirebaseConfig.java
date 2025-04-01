@@ -4,7 +4,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
@@ -13,11 +13,10 @@ import java.io.IOException;
 
 @Data
 @Configuration
+@ConfigurationProperties("firebase-config")
 public class FirebaseConfig {
 
-    @Value("${firebase.serviceAccountFilename}")
     private String serviceAccountFilename;
-    @Value("${firebase.realtimeDatabaseUrl}")
     private String realtimeDatabaseUrl;
 
     @PostConstruct
